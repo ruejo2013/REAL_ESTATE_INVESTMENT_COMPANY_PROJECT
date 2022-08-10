@@ -7,6 +7,7 @@ from pathlib import Path
 from dbutils import create_df, credit_score_checker
 from dbutils.tableutils import create_tables, query_table
 import questionary
+from functools import reduce
 
 
 file_tbl = Path('Resources/customer_data.csv')
@@ -28,13 +29,25 @@ and ssn = '{ssn}'
 # """
 
 
+
+
 def main():
     df = create_df(file_tbl)
-    # print(df.head(2))
+    
     engine = create_tables(tbl_name, df)
     df_new = query_table(sql_query, tbl_name)
+    
+
     print('-------------- \n' )
-    print(credit_score_checker(df_new, 'credit_scores', first_name=first_name))
+    credit_check, avg_income = credit_score_checker(df_new, 'credit_scores', first_name=first_name)
+
+    if not credit_check:
+        print(f"Sorry {first_name} we cannot offer you a loan, your credit score is too low")
+        print(avg_income)
+    else:
+        print(f"Congrats {first_name} you qualify for a loan")
+        questionary.text("How much loan you want").ask()
+
     # print(df_new)
 
 
