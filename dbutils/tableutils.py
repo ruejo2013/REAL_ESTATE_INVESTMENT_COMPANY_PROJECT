@@ -28,11 +28,14 @@ def create_tables(tbl_name, df, engine=engine):
     return engine
 
 
-def query_table(query, tbl, engine=engine):
+def query_table(query, engine=engine):
     """
-    
-    
-    
+    Execute sql query to create an sqlite table
+    input:
+    tbl: table name
+    engine: sql engine   
+    output:
+    sql engine (with sql db and table)
     """
     dataframe = pd.read_sql_query(query, con=engine)
     return dataframe

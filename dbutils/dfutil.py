@@ -64,3 +64,21 @@ def credit_score_checker(df, col, first_name):
 
 
     return pass_credit_check, avg_income
+
+
+def amount_qualified(avg_income, period, request_amount):
+    """
+    Function to determine the amount the applicant qualify for.
+    Input:
+    
+    
+    """
+    qualified_amount = avg_income * 0.35 * period
+
+    if qualified_amount > request_amount:
+        return_msg = f"Congratulations! you are qualified for the amount you requested ${request_amount:,}"
+        return_amount = request_amount
+    else:
+        return_msg = f"Congratulations! you are qualified for  ${qualified_amount:,}"
+        return_amount = qualified_amount
+    return return_msg, return_amount
