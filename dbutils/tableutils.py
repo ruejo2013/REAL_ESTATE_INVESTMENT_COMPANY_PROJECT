@@ -3,7 +3,6 @@
 # Importing the required libraries and dependencies
 import numpy as np
 import pandas as pd
-import hvplot.pandas
 import sqlalchemy
 
 
@@ -17,8 +16,7 @@ engine = sqlalchemy.create_engine(database_connection_string)
 def create_tables(tbl_name, df, engine=engine):
         
     """
-    
-    
+    Function to create sql tables.  
     
     """
     

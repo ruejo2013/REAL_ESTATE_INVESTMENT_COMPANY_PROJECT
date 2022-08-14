@@ -2,8 +2,6 @@
 
 import numpy as np
 import pandas as pd
-import hvplot.pandas
-import questionary
 from functools import reduce
 
 
@@ -69,9 +67,6 @@ def credit_score_checker(df, col, first_name):
 def amount_qualified(avg_income, period, request_amount):
     """
     Function to determine the amount the applicant qualify for.
-    Input:
-    
-    
     """
     qualified_amount = avg_income * 0.35 * period
 
