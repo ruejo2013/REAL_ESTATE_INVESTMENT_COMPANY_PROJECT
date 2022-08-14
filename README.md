@@ -54,7 +54,56 @@ NYC Housing Data Post-Cleanup
 
 
 
- ---
+--------
+
+# How to Run.
+
+If we have a customer 
+
+firstname = Amanda
+
+Lastname = Stewart
+
+job = Sports therapist
+
+ssn = 437-84-6672
+
+Looking to buy a house in Manhathan, Brooklyn or Bronx
+
+### Steps:
+
+1. Clone this repo https://github.com/ruejo2013/REAL_ESTATE_INVESTMENT_COMPANY_PROJECT.git
+2. Navigate to the folder
+3. Activate and install the required libraries and dependencies
+4. Run the app following the steps below
+
+```
+  conda create -n <evn_name> python=3.7 
+  conda activate <evn_name>
+  git clone <link to repo>
+  pip install -r requirements.txt 
+
+  # give the right permission 
+  chmod +x <file_path/main.py>
+
+# run the app 
+./main.py
+ <input first name eg Amanda>
+ <input ssn eg 437-84-6672>
+ <input requested loan amount eg 2000000>
+ <select loan duration 15 or 30>
+ <accept the qualified loan amount (Y/n)>
+ <select a minimum of two boroughs from the list [MANHATHAN, BRONX, BROOKLYN, QUEENS, STATEN ISLAND]>
+
+ open and run the houses_for_sale.ipynb notebook
+
+```
+
+![alt text](/Resources/Images/how_to_run.png)
+
+
+
+---
  
 # Phase II: Building the Application
 Installation Guide for Phase II
