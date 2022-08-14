@@ -50,34 +50,41 @@ def main():
     df_housing = create_df(file_tbl2)
 
     engine = create_tables(tbl_name, df)
+    print("-------------- ------------ \n")
     df_new = query_table(sql_query, engine=engine)
 
-    print("-------------- \n")
+    print("-------------- --------------  \n")
     credit_check, avg_income = credit_score_checker(
         df_new, "credit_scores", first_name=first_name
     )
 
     if credit_check:
+        
         print(f"Congrats {first_name} you qualify for a loan")
         request_amount = int(questionary.text("How much loan do you want").ask())
+        print("--------------------------- \n")
         period_list = int(
             questionary.rawselect("Loan term", choices=["15", "30"]).ask()
         )
         return_msg, qualified_amount = amount_qualified(
             period_list, avg_income, request_amount
         )
+        print("-------------- ----------- \n")
         accept_offer = questionary.confirm(
             f"Congrats!, you qualify for ${qualified_amount:,}. Do you like to accept this loan amount?"
         ).ask()
-
+        
         print(return_msg)
+        print("-------------- ----------- \n")
 
         if accept_offer:
             borough_name = questionary.checkbox(
                 "What Boroughs would you like:",
                 choices=["MANHATTAN", "BRONX", "BROOKLYN", "QUEENS", "STATEN ISLAND"],
             ).ask()
+            print("-------------- ----------- \n")
             engine = create_tables(tbl_two, df_housing)
+            
             df_housing_selected = query_table(
                 sql_query2.format(tbl_2=tbl_two, borough_name=tuple(borough_name)),
                 engine=engine,
